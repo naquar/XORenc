@@ -2,7 +2,7 @@ BINARY_NAME=xorenc
 SOURCE_NAME=main.c
 COMPILER_NAME=gcc
 TEMP_FOLDER=tmp
-TASK_SEPARATOR=---
+TASK_SEPARATOR=--------------------------------------------------
 COMPILE_DATE=$(shell date --utc +'%Y-%m-%d - %H:%M:%S %Z')
 YEAR=2019
 AUTHOR_NAME=Renan Souza da Motta
@@ -12,7 +12,7 @@ PROGRAM_NAME=XORenc
 PROGRAM_VERSION=1.0.0-beta.2
 PROGRAM_DESCR=A XOR-based data encryption tool.
 
-SOURCE_FILES=COPYING LICENSE.txt README.md README.txt Makefile vars.sh xorenc.c xorenc_implementation.c $(SOURCE_NAME)
+SOURCE_FILES=COPYING LICENSE.txt README.md README.txt REPENT Makefile vars.sh xorenc.c xorenc_implementation.c $(SOURCE_NAME)
 
 define LICENSE_INFO
 The MIT License (MIT)\n\nCopyright (c) $(YEAR) $(AUTHOR_NAME) <$(AUTHOR_EMAIL)>\n\nPermission is hereby granted, free of charge, to any person obtaining a copy of\nthis software and associated documentation files (the "Software"), to deal in\nthe Software without restriction, including without limitation the rights to\nuse, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of\nthe Software, and to permit persons to whom the Software is furnished to do so,\nsubject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all\ncopies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS\nFOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR\nCOPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER\nIN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN\nCONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
@@ -57,8 +57,8 @@ license: # generate program's license information
 source: # archive source file for distribution with binaries
 	@mkdir -p $(PROGRAM_NAME)/src
 	@cp $(SOURCE_FILES) $(PROGRAM_NAME)/src
-	@tar -c $(PROGRAM_NAME) --to-stdout | bzip2 --compress --best > $(PROGRAM_NAME)-v$(PROGRAM_VERSION).tar.bz2
-	@echo -e 'Done! :)\n\nSource code archived and saved as:\n\t$(PROGRAM_NAME)-v$(PROGRAM_VERSION).tar.bz2'
+	@tar -c $(PROGRAM_NAME) --to-stdout | xz --extreme -9 --stdout -v > $(PROGRAM_NAME)-v$(PROGRAM_VERSION).tar.xz
+	@echo -e 'Done! :)\n\nSource code archived and saved as:\n\t$(PROGRAM_NAME)-v$(PROGRAM_VERSION).tar.xz'
 
 LOCAL_DIR=/usr/local
 BIN_DIR=$(LOCAL_DIR)/bin
@@ -72,4 +72,6 @@ install: # install program to system
 
 clean: # remove unnecessary files from folder
 	# clean 'release'
-	@rm -r -f ./$(TEMP_FOLDER) ./$(BINARY_NAME)
+	@rm -r -f ./$(TEMP_FOLDER) ./$(BINARY_NAME) vars.h
+	# clean 'source'
+	@rm -r -f $(PROGRAM_NAME) $(PROGRAM_NAME)-v$(PROGRAM_VERSION).tar.xz

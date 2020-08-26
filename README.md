@@ -1,5 +1,5 @@
 # XORenc
-xorenc is a "XOR-based" data encryption tool.
+XORenc is a "XOR-based" data encryption tool.
 
 
 **Usage:**
