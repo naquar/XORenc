@@ -134,8 +134,6 @@ char* XORenc_int2hex(size_t n, unsigned int pad, bool lowercase) {
 	return RESULT;
 }
 
-
-
 /** ----------------------------------------------------------------------------------------
 
 	XORenc_md5:
@@ -181,8 +179,6 @@ void XORenc_md5(const uint8_t* data, const size_t data_len, uint8_t* digest_b, c
 
 	free(md5_ctx);
 }
-
-
 
 /** ----------------------------------------------------------------------------------------
 
@@ -254,8 +250,6 @@ TXORencHash XORenc_hash_scrypt(	const char*  pass,
 	return RESULT;
 }
 
-
-
 /** ----------------------------------------------------------------------------------------
 
 	XORenc_hash_argon2:
@@ -326,8 +320,6 @@ TXORencHash XORenc_hash_argon2(	const char*  pass,
 	return RESULT;
 }
 
-
-
 bool XORenc_key_is_byte_sequence(const char* key) {
 
 	// check if input key is of the format: 'XX XX XX...' -> Where 'X' is anything in the range 0-9 and A-F.
@@ -379,8 +371,6 @@ bool XORenc_key_is_byte_sequence(const char* key) {
 	// survived until here, return 'true' :)
 	return true;
 }
-
-
 
 /** ----------------------------------------------------------------------------------------
 
@@ -525,8 +515,6 @@ TXORencKey XORenc_key_load(const char* str, const size_t block) {
 	return RESULT;
 }
 
-
-
 /** ----------------------------------------------------------------------------------------
 
 	XORenc_encrypt_xor:
@@ -583,8 +571,6 @@ void XORenc_encrypt_xor(uint8_t* data, const size_t data_len, const uint8_t* key
 		}
 	}
 }
-
-
 
 /** ----------------------------------------------------------------------------------------
 
@@ -701,8 +687,6 @@ int XORenc_encrypt_derived_next(char* last_md5[], uint8_t* data, const size_t da
   
 	return 0;
 }
-
-
 
 /** ----------------------------------------------------------------------------------------
 

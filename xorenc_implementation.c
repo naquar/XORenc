@@ -1,4 +1,5 @@
 // Warning: Best read if using a monospaced/fixed-width font and tab width of 4.
+
 /** ================================================================================
 
 	This file is part of 'XORenc'.
@@ -39,8 +40,6 @@ void XORenc_show_tips() {
 	fprintf(stderr, "\t2.Always use random/unpredictable keys/passwords to encrypt files.\n");
 	fprintf(stderr, "\t3.When using direct encryption mode, make sure the key is (at least) as long as the data being encrypted.\n");
 }
-
-
 
 /** ----------------------------------------------------------------------------------------
 
@@ -119,8 +118,6 @@ int XORenc_write_to_file(const char* filename, const char* extension, const uint
 	
 	return 0;
 }
-
-
 
 /** ----------------------------------------------------------------------------------------
 
@@ -420,8 +417,6 @@ int XORenc_encrypt(const char* filename, const char* key_filename, const char* k
 	
 	return 0;
 }
-
-
 
 /** ----------------------------------------------------------------------------------------
 
